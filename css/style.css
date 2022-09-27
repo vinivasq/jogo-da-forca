@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+body {
+    background-color: #F3F5FC;
+    font-family: 'Inter';
+}
+
+.logo {
+    margin: 4vh 4vh 0;
+    height: 10vh;
+}
+
+#buttons-container {
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: .5em 3em;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 68vh;
+}
+
+canvas {
+    margin: auto;
+}
+
+button {
+    display: flex;
+    border-radius: 1.3em;
+    box-shadow: 2px 2px 8px -3px rgba(0, 0, 0, 0.47);
+    padding: 1.5em;
+    width: 15em;
+    height: 2em;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+    transition: 500ms all;
+}
+
+button:hover {
+    transform: scale(1.02);
+}
+
+.btn-primario {
+    color: #FFFFFF;
+    border: none;
+    background-color: #0A3871;
+}
+
+.btn-secundario {
+    background: none;
+    border: solid 1px #0A3871;
+    color: #0A3871;
+}
+
+.btn-primario:hover {
+    background-color: #004dab;
+}
+
+footer {
+    display: flex;
+    height: 5vh;
+    justify-content: center;
+    align-items: center;
+}
+
+footer p {
+    font-size: 1em;
+    text-align: center;
+    color: #0A3871;
+    text-shadow:  #0a38714a 2px 3px 7px;
+}
+
+footer a {
+    color: inherit;
+}
+
+.palavra {
+    display: flex;
+    justify-content: center;
+    height: 35vh;
+    margin: 10% auto;
+    margin-top: 5%;
+    font-size: 2em;
+    color: #0A3871;
+    background: none;
+    border: none;
+}
+
+.info {
+    display: flex;
+    margin-left: 30%;
+    font-size: 14px;
+    color: #616161;
+}
+
+@media screen and (max-width: 480px) {
+    .logo {
+        width: 10vw;
+    }
+
+    .content-container {
+        height: 60vh;
+    }
+    
+    .palavra {
+        height: 50vh;
+    }
+
+    .info {
+        justify-content: center;
+        margin-left: 0;
+    }
+    
+    canvas {
+        width: 100vw;
+    }
+
+    footer {
+        height: 15vh;
+    }
+}

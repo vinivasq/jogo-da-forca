@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/70ad3fdfa7.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="images/alura_favicon.jpeg" type="image/x-icon">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Jogo da Forca</title>
+</head>
+<body>
+    <img src="images/alura-logo.svg" alt="logo da alura" class="logo">
+    
+    <section id="palavra" class="content-container">
+        <textarea class="palavra" placeholder="Digite uma palavra..."></textarea>
+        <p class="info">
+            <i class="fa-solid fa-circle-exclamation"></i>Máx. 8 letras sem acento.
+        </p>
+    </section>
+
+   <section id="jogo" class="content-container">
+        <canvas width="800" height="400"></canvas>
+    </section>
+    
+    <div id="buttons-container">
+        <button id="novo-jogo" class="btn-primario">Novo Jogo</button>
+        <button id="adicionar-palavra" class="btn-secundario">Adicionar Palavra</button>
+        <button id="salvar-comecar" class="btn-primario">Salvar e Começar</button>
+        <button id="voltar" class="btn-secundario">Voltar</button>
+        <button id="desistir" class="btn-secundario">Desistir</button>
+    </div>
+
+    <footer>
+        <p>Desenvolvido por Vinícius Vasques. <a href="https://www.linkedin.com/in/vinivasq/" target="_blank"><i class="fa-brands fa-linkedin"></i></a> <a href="https://github.com/vinivasq" target="_blank"><i class="fa-brands fa-github"></i></a></p> 
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="canvas.js"></script>
+</body>
+</html>
