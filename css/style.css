@@ -101,7 +101,7 @@ footer a {
     color: #616161;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 799px) {
     .logo {
         width: 10vw;
     }

@@ -1,10 +1,10 @@
 let tela = document.querySelector('canvas');
 let pincel = tela.getContext('2d');
-pincel.fillStyle = '#0A3871';
+let espacamento = 0;
+
 pincel.strokeStyle = '#0A3871';
 pincel.lineCap = 'round';
 pincel.lineWidth = 3;
-pincel.font = "30px Inter";
 
 
 function DesenhaForca()
@@ -29,6 +29,47 @@ function DesenhaForca()
     pincel.closePath();
 }
 
+function DesenhaBoneco(erros)
+{
+    switch (erros) {
+        case 5:
+            pincel.beginPath();
+            pincel.arc(400, 85, 20, 0, 2 * Math.PI);
+            pincel.stroke();
+            break;
+        
+        case 4:
+            pincel.moveTo(400, 105);
+            pincel.lineTo(400, 200);
+            pincel.stroke();
+            break;
+        
+        case 3:
+            pincel.moveTo(400, 110);
+            pincel.lineTo(370, 160);
+            pincel.stroke();
+            break;
+        case 2:
+            pincel.moveTo(400, 110);
+            pincel.lineTo(430, 160);
+            pincel.stroke();
+            break;
+
+        case 1:
+            pincel.moveTo(400, 200);
+            pincel.lineTo(380, 240);
+            pincel.stroke();
+            break;
+        case 0:
+            pincel.moveTo(400, 200);
+            pincel.lineTo(420, 240);
+            pincel.stroke();
+            break;
+        default:
+            break;
+    }
+}
+
 function DesenhaLinha(posicao) 
 {      
     pincel.moveTo(200 + posicao, 350);
@@ -39,17 +80,23 @@ function DesenhaLinha(posicao)
 function DesenhaTabuleiro() 
 {   
     let largura = 450/palavraSecreta.length;
-    console.log(palavraSecreta);
-    console.log(palavraSecreta.length);
-
     for (let i = 0; i < palavraSecreta.length; i++) {
-        console.log(i);
         DesenhaLinha(largura*i);
     }
 }
 
 function EscreveLetraCerta(i)
 {
-        let largura = 450/palavraSecreta.length;
+    pincel.fillStyle = '#0A3871';
+    pincel.font = "30px Inter";
+    let largura = 450/palavraSecreta.length;
     pincel.fillText(palavraSecreta[i], 215 + (largura * i) , 340);
+}
+
+function EscreveLetraErrada(letra)
+{   
+    pincel.font = "24px Inter";
+    pincel.fillStyle = "#ff000087"
+    pincel.fillText(letra, 210 + espacamento, 400);
+    espacamento += 30;
 }

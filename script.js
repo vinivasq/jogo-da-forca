@@ -1,38 +1,62 @@
 function IniciaJogo() 
 {
+    letrasCorretas = [];
+    letrasErradas = [];
+    espacamento = 0
+    erros = 6;
+    acertos = 0;
+    
     TelaJogo();
     DesenhaForca();
     SorteiaPalavra();
     DesenhaTabuleiro();
+    
     document.onkeydown = (e) => {
         let key = e.keyCode;
         let letra = String.fromCharCode(key);
     
-        if (VerificaLetra(key, letra) && palavraSecreta.includes(letra) ) {
+        if (VerificaLetra(key, letra) && palavraSecreta.includes(letra) && !letrasCorretas.includes(letra)) {
             for (let i = 0; i < palavraSecreta.length; i++) {
                 if (palavraSecreta[i] === letra) {
                     EscreveLetraCerta(i);
+                    letrasCorretas.push(letra);
+                    acertos ++;
+                    VerificaAcertos();
                 }   
             }
+        }
+        else if (VerificaLetra(key, letra) && !letrasErradas.includes(letra)) {
+            letrasErradas.push(letra);
+            EscreveLetraErrada(letra);
+            erros --;
+            DesenhaBoneco(erros);
+            VerificaErros();
         }
     }
 }
 
-function VerificaLetra(key, letra) {
+function VerificaAcertos() {
+    if (acertos == palavraSecreta.length) {
+        alert("Parabéns, Você ganhou!");
+        IniciaJogo();
+    }
+}
+
+function VerificaErros() {
+    if (erros == 0) {
+        alert("Você perdeu! A palavra correta era: " + palavraSecreta);
+        IniciaJogo();
+    }
+}
+
+function VerificaLetra(key) {
     let estado = true;
     if (key >= 65 && key <=90) {
-        letras.push(letra);
-        console.log(letra);
-        console.log(letras);
         return estado;
     }
     else {
         estado = false;
-        letras.push(letra);
-        console.log(letra);
-        console.log(letras, 'if false');
         return estado;
-
     }
 }
 
@@ -46,7 +70,7 @@ function AdicionaPalavra()
 {
     TelaPalavra();
     let input = document.querySelector("textarea");
-    let palavraAdicionada = input.value
+    let palavraAdicionada = input.value.toUpperCase();
     palavrasChave.push(palavraAdicionada);
     console.log(palavrasChave);
     input.value = "";
@@ -98,7 +122,10 @@ function BotoesRow() {
 
 let palavrasChave = ["ALURA", "CARRO", "CELULAR", "CACHORRO", "TORTA", "ESPELHO", "NOTEBOOK", "MESA"];
 let palavraSecreta = '';
-let letras = [];
+let letrasCorretas = [];
+let letrasErradas = [];
+let erros = 6;
+let acertos = 0;
 
 let jogo = document.getElementById("jogo");
 let palavraInput = document.getElementById("palavra");
