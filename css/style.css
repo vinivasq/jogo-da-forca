@@ -20,6 +20,26 @@ body {
     gap: .5em 3em;
 }
 
+#mobile-input {
+    display: flex;
+    justify-content: center;
+    gap: .5em;
+    margin-bottom: .5em;
+}
+
+#input {
+    width: 4em;
+    text-align: center;
+    background: #F3F5FC;
+    border: solid 1px #004dab;
+    border-radius: 1.3em;
+    box-shadow: 1px 1px 8px -3px rgba(0, 0, 0, 0.38);
+}
+
+#chutar {
+    width: 10em;
+}
+
 .content-container {
     display: flex;
     flex-direction: column;
@@ -66,7 +86,10 @@ button:hover {
 
 footer {
     display: flex;
-    height: 5vh;
+    position: fixed;
+    bottom: 2%;
+    width: 100vw;
+    padding: auto;
     justify-content: center;
     align-items: center;
 }
@@ -107,7 +130,7 @@ footer a {
     }
 
     .content-container {
-        height: 60vh;
+        height: 50vh;
     }
     
     .palavra {
@@ -117,13 +140,10 @@ footer a {
     .info {
         justify-content: center;
         margin-left: 0;
+        margin-bottom: 1em;
     }
     
     canvas {
         width: 100vw;
-    }
-
-    footer {
-        height: 15vh;
     }
 }

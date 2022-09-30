@@ -70,17 +70,24 @@ function AdicionaPalavra()
 {
     TelaPalavra();
     let input = document.querySelector("textarea");
-    let palavraAdicionada = input.value.toUpperCase();
-    palavrasChave.push(palavraAdicionada);
-    console.log(palavrasChave);
-    input.value = "";
-    IniciaJogo();
+    let palavraDigitada = input.value.toUpperCase();
+    if (palavraDigitada != "" && palavraDigitada.length <=8) {
+        palavrasChave.push(palavraDigitada);
+        input.value = "";
+        IniciaJogo();
+    }
+    else {
+        alert("Palavra inválida!");
+        input.value = "";
+        TelaPalavra()
+    }
 }
 
 function VoltarIndex() {
     
     BotoesColumn();
     jogo.style.display = 'none';
+    mobileInput.style.display = 'none';
     palavraInput.style.display = 'none';
     btnSalvaComeca.style.display = 'none';
     btnDesistir.style.display = 'none';
@@ -99,6 +106,10 @@ function TelaPalavra() {
 }
 
 function TelaJogo() {
+    if (window.innerWidth < 480) {
+        mobileInput.style.display = 'flex';
+    }
+
     BotoesRow();
     palavra.style.display = 'none';
     btnAdicionarPalavra.style.display = 'none';
@@ -110,7 +121,6 @@ function TelaJogo() {
 }
 
 function BotoesColumn() {
-    
     botoes.style.flexDirection = 'column';
     botoes.style.height= '70vh';
 }
@@ -130,7 +140,10 @@ let acertos = 0;
 let jogo = document.getElementById("jogo");
 let palavraInput = document.getElementById("palavra");
 let botoes = document.getElementById("buttons-container");
+let mobileInput = document.getElementById("mobile-input");
 let btnNovoJogo = document.getElementById("novo-jogo");
+let btnChutar = document.getElementById("chutar");
+let input = document.getElementById("input");
 let btnAdicionarPalavra = document.getElementById("adicionar-palavra");
 let btnSalvaComeca = document.getElementById("salvar-comecar");
 let btnDesistir = document.getElementById("desistir");
@@ -143,6 +156,7 @@ btnVoltar.onclick = VoltarIndex;
 btnDesistir.onclick = VoltarIndex;
 
 jogo.style.display = 'none';
+mobileInput.style.display = 'none';
 palavraInput.style.display = 'none';
 btnSalvaComeca.style.display = 'none';
 btnDesistir.style.display = 'none';
