@@ -22,22 +22,19 @@ body {
 
 #mobile-input {
     display: flex;
-    justify-content: center;
-    gap: .5em;
-    margin-bottom: .5em;
-}
-
-#input {
-    width: 4em;
     text-align: center;
-    background: #F3F5FC;
-    border: solid 1px #004dab;
-    border-radius: 1.3em;
-    box-shadow: 1px 1px 8px -3px rgba(0, 0, 0, 0.38);
+    width: 15em;
+    margin: auto;
+    margin-bottom: 5em;
+    padding: .5em 0;
+    background: none;
+    border: none;
+    border-bottom: solid 1px #004dab;
+    animation: fade-inNout 500ms infinite alternate;
 }
 
-#chutar {
-    width: 10em;
+#mobile-input:focus {
+    animation: none;
 }
 
 .content-container {
@@ -86,10 +83,7 @@ button:hover {
 
 footer {
     display: flex;
-    position: fixed;
-    bottom: 2%;
-    width: 100vw;
-    padding: auto;
+    height: 5vh;
     justify-content: center;
     align-items: center;
 }
@@ -124,13 +118,18 @@ footer a {
     color: #616161;
 }
 
+@keyframes fade-inNout {
+    from {opacity: 0.5;}
+    to {opacity: 1;}
+}
+
 @media screen and (max-width: 799px) {
     .logo {
         width: 10vw;
     }
 
     .content-container {
-        height: 50vh;
+        height: 40vh;
     }
     
     .palavra {
@@ -145,5 +144,9 @@ footer a {
     
     canvas {
         width: 100vw;
+    }
+
+    footer {
+        height: 15vh;
     }
 }
