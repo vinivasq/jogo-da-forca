@@ -86,10 +86,10 @@ footer {
     height: 5vh;
     justify-content: center;
     align-items: center;
+    justify-self: flex-end;
 }
 
 footer p {
-    font-size: 1em;
     text-align: center;
     color: #0A3871;
     text-shadow:  #0a38714a 2px 3px 7px;
@@ -144,9 +144,5 @@ footer a {
     
     canvas {
         width: 100vw;
-    }
-
-    footer {
-        height: 15vh;
     }
 }
