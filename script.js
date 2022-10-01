@@ -1,61 +1,47 @@
-function IniciaJogo() 
+function iniciaJogo() 
 {
     letrasCorretas = [];
     letrasErradas = [];
     espacamento = 0
     erros = 6;
     acertos = 0;
-    
-    TelaJogo();
-    DesenhaForca();
-    SorteiaPalavra();
-    DesenhaTabuleiro();
+
+    telaJogo();
+    desenhaForca();
+    sorteiaPalavra();
+    desenhaTabuleiro();
     
     document.onkeydown = (e) => {
         let key = e.keyCode;
         let letra = String.fromCharCode(key);
-        ProcessaEntrada(key, letra);
+        processaEntrada(key, letra);
         if (mobileInput.value.length >=1) {
             mobileInput.value = "";
         }
     }
 }
 
-function ProcessaEntrada(key, letra) {
-    if (VerificaLetra(key, letra) && palavraSecreta.includes(letra) && !letrasCorretas.includes(letra)) {
+function processaEntrada(key, letra) {
+    if (verificaLetra(key, letra) && palavraSecreta.includes(letra) && !letrasCorretas.includes(letra)) {
         for (let i = 0; i < palavraSecreta.length; i++) {
             if (palavraSecreta[i] === letra) {
-                EscreveLetraCerta(i);
+                escreveLetraCerta(i);
                 letrasCorretas.push(letra);
                 acertos++;
-                VerificaAcertos();
+                verificaAcertos();
             }
         }
     }
-    else if (VerificaLetra(key, letra) && !letrasErradas.includes(letra)) {
+    else if (verificaLetra(key, letra) && !letrasErradas.includes(letra)) {
         letrasErradas.push(letra);
-        EscreveLetraErrada(letra);
+        escreveLetraErrada(letra);
         erros--;
-        DesenhaBoneco(erros);
-        VerificaErros();
+        desenhaBoneco(erros);
+        verificaErros();
     }
 }
 
-function VerificaAcertos() {
-    if (acertos == palavraSecreta.length) {
-        alert("Parabéns, Você ganhou!");
-        IniciaJogo();
-    }
-}
-
-function VerificaErros() {
-    if (erros == 0) {
-        alert("Você perdeu! A palavra correta era: " + palavraSecreta);
-        IniciaJogo();
-    }
-}
-
-function VerificaLetra(key) {
+function verificaLetra(key) {
     let estado = true;
     if (key >= 65 && key <=90) {
         return estado;
@@ -66,48 +52,45 @@ function VerificaLetra(key) {
     }
 }
 
-function SorteiaPalavra() {
+function verificaAcertos() {
+    if (acertos == palavraSecreta.length) {
+        alert("Parabéns, Você ganhou!");
+        iniciaJogo();
+    }
+}
+
+function verificaErros() {
+    if (erros == 0) {
+        alert("Você perdeu! A palavra correta era: " + palavraSecreta);
+        iniciaJogo();
+    }
+}
+
+function sorteiaPalavra() {
     let palavra = palavrasChave[Math.floor(Math.random() * palavrasChave.length)]
     palavraSecreta = palavra
     return palavra
 }
 
-function AdicionaPalavra()
+function adicionaPalavra()
 {
-    TelaPalavra();
+    telaPalavra();
     let input = document.querySelector("textarea");
     let palavraDigitada = input.value.toUpperCase();
     if (palavraDigitada != "" && palavraDigitada.length <=8) {
         palavrasChave.push(palavraDigitada);
         input.value = "";
-        IniciaJogo();
+        iniciaJogo();
     }
     else {
         alert("Palavra inválida!");
         input.value = "";
-        TelaPalavra()
+        telaPalavra()
     }
 }
 
-function VoltarIndex() {
-    
-    BotoesColumn();
-    jogo.style.display = 'none';
-    mobileInput.style.display = 'none';
-    palavraInput.style.display = 'none';
-    btnSalvaComeca.style.display = 'none';
-    btnDesistir.style.display = 'none';
-    btnVoltar.style.display = 'none';
-    btnAdicionarPalavra.style.display = 'flex';
-    btnNovoJogo.style.display = 'flex';
-    
-    if (window.innerWidth <480) {
-        footer.style.marginTop = "5vh";
-    }
-}
-
-function TelaPalavra() {
-    BotoesRow();
+function telaPalavra() {
+    botoesRow();
     btnNovoJogo.style.display = 'none';
     btnAdicionarPalavra.style.display = 'none';
     palavraInput.style.display = 'flex';
@@ -119,13 +102,13 @@ function TelaPalavra() {
     }
 }
 
-function TelaJogo() {
+function telaJogo() {
     if (window.innerWidth < 480) {
         mobileInput.style.display = 'flex';
         footer.style.marginTop = "15vh";
     }
 
-    BotoesRow();
+    botoesRow();
     palavra.style.display = 'none';
     btnAdicionarPalavra.style.display = 'none';
     btnSalvaComeca.style.display = 'none';
@@ -135,14 +118,18 @@ function TelaJogo() {
     btnDesistir.style.display = 'flex';
 }
 
-function BotoesColumn() {
+function botoesColumn() {
     botoes.style.flexDirection = 'column';
     botoes.style.height= '70vh';
 }
 
-function BotoesRow() {
+function botoesRow() {
     botoes.style.flexDirection = 'row';
     botoes.style.height= '12vh';
+}
+
+function recarregaPagina() {
+    location.reload();
 }
 
 let palavrasChave = ["ALURA", "CARRO", "CELULAR", "CACHORRO", "TORTA", "ESPELHO", "NOTEBOOK", "MESA"];
@@ -165,11 +152,11 @@ let btnSalvaComeca = document.getElementById("salvar-comecar");
 let btnDesistir = document.getElementById("desistir");
 let btnVoltar = document.getElementById("voltar");
 
-btnNovoJogo.onclick = IniciaJogo;
-btnAdicionarPalavra.onclick = TelaPalavra;
-btnSalvaComeca.onclick = AdicionaPalavra;
-btnVoltar.onclick = VoltarIndex;
-btnDesistir.onclick = VoltarIndex;
+btnNovoJogo.onclick = iniciaJogo;
+btnAdicionarPalavra.onclick = telaPalavra;
+btnSalvaComeca.onclick = adicionaPalavra;
+btnVoltar.onclick = recarregaPagina;
+btnDesistir.onclick = recarregaPagina;
 
 jogo.style.display = 'none';
 mobileInput.style.display = 'none';

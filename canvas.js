@@ -7,7 +7,7 @@ pincel.lineCap = 'round';
 pincel.lineWidth = 3;
 
 
-function DesenhaForca()
+function desenhaForca()
 {
     pincel.clearRect(0, 0, tela.width, tela.height);
     pincel.beginPath();
@@ -29,7 +29,7 @@ function DesenhaForca()
     pincel.closePath();
 }
 
-function DesenhaBoneco(erros)
+function desenhaBoneco(erros)
 {
     switch (erros) {
         case 5:
@@ -70,22 +70,22 @@ function DesenhaBoneco(erros)
     }
 }
 
-function DesenhaLinha(posicao) 
+function desenhaLinha(posicao) 
 {      
     pincel.moveTo(200 + posicao, 350);
     pincel.lineTo(250 + posicao, 350);
     pincel.stroke();
 }
 
-function DesenhaTabuleiro() 
+function desenhaTabuleiro() 
 {   
     let largura = 450/palavraSecreta.length;
     for (let i = 0; i < palavraSecreta.length; i++) {
-        DesenhaLinha(largura*i);
+        desenhaLinha(largura*i);
     }
 }
 
-function EscreveLetraCerta(i)
+function escreveLetraCerta(i)
 {
     pincel.fillStyle = '#0A3871';
     pincel.font = "30px Inter";
@@ -93,7 +93,7 @@ function EscreveLetraCerta(i)
     pincel.fillText(palavraSecreta[i], 215 + (largura * i) , 340);
 }
 
-function EscreveLetraErrada(letra)
+function escreveLetraErrada(letra)
 {   
     pincel.font = "24px Inter";
     pincel.fillStyle = "#ff000087"
