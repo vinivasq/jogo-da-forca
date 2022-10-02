@@ -44,6 +44,26 @@ body {
     height: 68vh;
 }
 
+.palavra {
+    display: flex;
+    justify-content: center;
+    height: 35vh;
+    margin: 10% auto;
+    margin-top: 5%;
+    font-size: 2em;
+    color: #0A3871;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.info {
+    display: flex;
+    margin-left: 30%;
+    font-size: 14px;
+    color: #616161;
+}
+
 canvas {
     margin: auto;
 }
@@ -97,25 +117,6 @@ footer p {
 
 footer a {
     color: inherit;
-}
-
-.palavra {
-    display: flex;
-    justify-content: center;
-    height: 35vh;
-    margin: 10% auto;
-    margin-top: 5%;
-    font-size: 2em;
-    color: #0A3871;
-    background: none;
-    border: none;
-}
-
-.info {
-    display: flex;
-    margin-left: 30%;
-    font-size: 14px;
-    color: #616161;
 }
 
 @keyframes fade-inNout {
